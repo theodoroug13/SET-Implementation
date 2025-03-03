@@ -42,6 +42,8 @@ The project features efficient insertion, traversal, merging, and finding the k-
  │   ├── Makefile                  # Test Makefile
  │   ├── set_utils_test.d          # For Valgrind test
  │
+ ├── sort
+ │   ├── mergesort                 # Merge Sort Implementation
  ├── Makefile                      # Compilation setup
  ├── README.md                     # Project documentation
 ```
