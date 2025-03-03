@@ -65,34 +65,51 @@ To check for memory leaks:
 make valgrind
 ```
 
-## 📊 Time Complexity Analysis
-### **Exercise 1**
-- **set_from_vector:** `O(n log n)` (depends on `set_insert`, assumed `O(log n)`).
-- **set_to_vector:** `O(n log n)` (`vector_insert_last` is `O(1)`, `set_next` is `O(log n)`).
+## 🏗️ Comparison of the Two Implementations
 
-### **Exercise 2**
-- **set_traverse:** `O(n log n)` (Iterates over the set once, `set_next` is `O(log n)`).
-- **set_merge:** `O(n log n)` (`set_next` and `set_insert` are `O(log n)`, iterated `n` times).
-- **set_find_k_smallest:** `O(n)` (worst case `k = n`).
+### **1️⃣ General SET Implementation (Using ADTSet)
 
-### **Exercise 4**
-- Two vectors are created: one **sorted**, one **unsorted**.
-- Elements are split, inserting sorted values into the sorted vector.
-- The unsorted vector is **sorted using `merge_sort`** (`O(n log n)`).
-- The two vectors are merged into one **fully sorted vector**.
-- The **BST-SET is created** from this sorted vector.
+Uses a generic approach, allowing flexibility with different underlying data structures.
 
-### **Exercise 5**
-- To implement `set_find_k_smallest`, modifications were made to `struct set_node` in `ADTSet.c`, adding:
-  - `int sub_size` (size of the subtree rooted at `node`).
-- New helper functions:
-  - `static int node_size`
-  - `static void node_inc_size`
-  - `static void node_dec_size`
-- The following functions were modified to maintain correctness:
-  - `static SetNode node_insert`
-  - `static SetNode node_remove_min`
-  - `static SetNode node_remove`
+Works well with dynamic arrays, linked lists, or other tree-based structures.
+
+Designed to be modular and extensible, making it adaptable for various use cases.
+
+Operations are implemented using function pointers to allow interchangeable data structures.
+
+-   Time Complexity:
+
+    -   set_from_vector: O(n log n) (depends on set_insert, assumed O(log n)).
+
+    -   set_to_vector: O(n log n) (vector_insert_last is O(1), set_next is O(log n)).
+
+    -   set_traverse: O(n log n) (Iterates over the set once, set_next is O(log n)).
+
+    -   set_merge: O(n log n) (set_next and set_insert are O(log n), iterated n times).
+
+    -   set_find_k_smallest: O(n) (worst case k = n).
+
+### **2️⃣ BST-Based Implementation (UsingBinarySearchTree)
+
+Uses a Binary Search Tree (BST) as the core structure for SET operations.
+
+Optimized for fast ordered retrieval of elements.
+
+Provides logarithmic time complexity for insertions and lookups (O(log n)).
+
+Supports efficient k-th smallest element retrieval.
+
+BST operations ensure that elements remain sorted.
+
+-   Time Complexity:
+
+    -   Insertion & Lookup: O(log n) due to the nature of BSTs.
+
+    -   Traversal: O(n log n) as elements are iterated in sorted order.
+
+    -   Merge: O(n log n) as BST properties must be maintained.
+
+    -   Finding k-th smallest element: O(n) (involves traversing the tree structure).
 
 ## 🎯 Future Improvements
 - Implement **alternative tree-based structures** for SET.
