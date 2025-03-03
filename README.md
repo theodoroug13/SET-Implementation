@@ -39,7 +39,8 @@ The project features efficient insertion, traversal, merging, and finding the k-
  │
  ├── tests
  │   ├── set_utils_test.c          # General SET test file
- │   ├── set_utils_bst_test.c      # BST-specific test file
+ │   ├── Makefile                  # Test Makefile
+ │   ├── set_utils_test.d          # For Valgrind test
  │
  ├── Makefile                      # Compilation setup
  ├── README.md                     # Project documentation
